@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
 
+import { myAction } from "actions";
 import Home from "components/Home";
 
 export class HomeApp extends Component {
@@ -21,7 +22,15 @@ export class HomeApp extends Component {
    * @return {(Promise|undefined)} If this method returns a promise, the router
    * will wait for the promise to resolve before the container is loaded.
    */
-  static gsBeforeRoute (/* {dispatch}, renderProps, query, serverProps */) {}
+  static gsBeforeRoute ({dispatch}, renderProps, query, serverProps) {
+    return dispatch(myAction())
+      .then((value) => {
+        console.log(".then", value);
+      })
+      .catch(() => {
+        console.log(".catch");
+      });
+  }
 
   render () {
     return (
