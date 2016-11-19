@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
 
-import { myAction } from "actions/myActions";
+import * as actions from "actions/myActions";
 import Home from "components/Home";
 
 export class HomeApp extends Component {
@@ -25,12 +25,21 @@ export class HomeApp extends Component {
   static gsBeforeRoute (/* {dispatch}, renderProps, query, serverProps */) {}
 
   render () {
-    const { myAction, result } = this.props;
+    const { myAction, myActionRejects, myAction2, myActionRejects2, result } = this.props;
 
     return (
       <div>
         <Helmet title="Home"/>
-        <button onClick={() => myAction()}>Dispatch action</button>
+        <p>Use original promise middleware:</p>
+        <button onClick={() => myAction()}>Promise fulfills</button>
+        <button onClick={() => myActionRejects()}>Promise rejects</button>
+        <button onClick={() => myAction(true)}>Promise fulfills (bug in code)</button>
+
+        <p>Use alternative promise middleware:</p>
+        <button onClick={() => myAction2()}>Promise fulfills</button>
+        <button onClick={() => myActionRejects2()}>Promise rejects</button>
+        <button onClick={() => myAction2(true)}>Promise fulfills (bug in code)</button>
+
         <p>result: {result}</p>
       </div>
     );
@@ -39,6 +48,6 @@ export class HomeApp extends Component {
 
 export default connect(
   (state) => ({result: state.myReducer}),
-  (dispatch) => bindActionCreators({myAction}, dispatch)
+  (dispatch) => bindActionCreators(actions, dispatch)
 )(HomeApp);
 

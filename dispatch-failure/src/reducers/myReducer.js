@@ -5,8 +5,13 @@ const INITIAL_STATE = null;
 
 export default (state=INITIAL_STATE, action) => {
   switch (action.type) {
+    case `${MY_ACTION}_INIT`:
+      return "";
+
     case MY_ACTION:
-      throw "bug in my code";
+      if (action.bug) {
+        throw "bug in my code";
+      }
       return "success";
 
     case `${MY_ACTION}_FAILURE`:
@@ -16,4 +21,3 @@ export default (state=INITIAL_STATE, action) => {
       return state;
   }
 };
-
