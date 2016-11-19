@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
 
+import { myAction } from "actions/myActions";
 import Home from "components/Home";
 
 export class HomeApp extends Component {
@@ -24,17 +25,20 @@ export class HomeApp extends Component {
   static gsBeforeRoute (/* {dispatch}, renderProps, query, serverProps */) {}
 
   render () {
+    const { myAction, result } = this.props;
+
     return (
       <div>
         <Helmet title="Home"/>
-        <Home />
+        <button onClick={() => myAction()}>Dispatch action</button>
+        <p>result: {result}</p>
       </div>
     );
   }
 }
 
 export default connect(
-  (/* state */) => ({/** _INSERT_STATE_  **/}),
-  (dispatch) => bindActionCreators({/** _INSERT_ACTION_CREATORS_ **/}, dispatch)
+  (state) => ({result: state.myReducer}),
+  (dispatch) => bindActionCreators({myAction}, dispatch)
 )(HomeApp);
 
