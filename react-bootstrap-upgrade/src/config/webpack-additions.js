@@ -38,7 +38,9 @@ module.exports = {
   additionalPreLoaders: [],
   additionalAliases: {},
   plugins: [],
-  vendor: [],
+  vendor: [
+    "react-bootstrap",
+  ],
   entryPoints: {
     "/my-entry-point": {
       name: "my-entry-point"
