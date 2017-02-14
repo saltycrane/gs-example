@@ -38,5 +38,10 @@ module.exports = {
   additionalPreLoaders: [],
   additionalAliases: {},
   plugins: [],
-  vendor: []
+  vendor: [],
+  entryPoints: {
+    "/my-entry-point": {
+      name: "my-entry-point"
+    }
+  }
 };
