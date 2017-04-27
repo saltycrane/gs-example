@@ -26,4 +26,4 @@ module.name_mapper='^compiled/\(.*\)'->'<PROJECT_ROOT>/node_modules/\1'
 module.name_mapper='^main/\(.*\)'->'<PROJECT_ROOT>/src/apps/main/\1'
 
 [version]
-^0.38.0
+^0.44.1
