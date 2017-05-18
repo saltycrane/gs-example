@@ -6,6 +6,10 @@ import { connect } from "react-redux";
 import Helmet from "react-helmet";
 
 import Home from "../components/Home";
+import { SourceMapBroken } from "../components/SourceMapBroken";
+import SourceMapWorks1 from "../components/SourceMapWorks1";
+import { SourceMapWorks2 } from "../components/SourceMapWorks2";
+import { SourceMapWorks3 } from "../components/SourceMapWorks3";
 
 export class HomeApp extends Component {
   /**
@@ -29,6 +33,10 @@ export class HomeApp extends Component {
       <div>
         <Helmet title="Home" />
         <Home />
+        <SourceMapBroken />
+        <SourceMapWorks1 />
+        <SourceMapWorks2 />
+        <SourceMapWorks3 />
       </div>
     );
   }
