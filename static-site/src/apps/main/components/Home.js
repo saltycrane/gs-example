@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { Component } from "react";
+import { Link } from "react-router";
 import "./Home.css";
 
 export default class Home extends Component {
@@ -32,6 +33,7 @@ export default class Home extends Component {
             <p>Generators for all kinds of things.</p>
           </div>
         </div>
+        <Link to="/page2">Page 2</Link>
       </div>
     );
   }

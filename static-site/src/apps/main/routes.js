@@ -8,10 +8,13 @@ import MasterLayout from "./components/MasterLayout";
 import HomeApp from "./containers/HomeApp";
 import NoMatchApp from "./containers/NoMatchApp";
 
-export default function routes (/*store: Object, httpClient: Object*/) {
+const Page2 = () => <div>Page 2</div>;
+
+export default function routes(/*store: Object, httpClient: Object*/) {
   return (
     <Route name="app" component={MasterLayout} path="/">
       <IndexRoute name="home" component={HomeApp} />
+      <Route component={Page2} path="page2" />
       <Route name={ROUTE_NAME_404_NOT_FOUND} path="*" component={NoMatchApp} />
     </Route>
   );
