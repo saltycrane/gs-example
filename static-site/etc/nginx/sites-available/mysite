@@ -1,0 +1,15 @@
+
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        alias /var/www/html/;
+    }
+    location /page2 {
+        alias /var/www/html/;
+    }
+    location /assets/ {
+        alias /var/www/assets/;
+    }
+}

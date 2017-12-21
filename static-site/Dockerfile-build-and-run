@@ -1,0 +1,18 @@
+FROM truecar/gluestick:1.15.0
+
+# build gluestick static site
+ADD . /app
+RUN npm install
+RUN gluestick build --static
+
+# install and set up ninx
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y rsync
+RUN rm -f /etc/nginx/sites-enabled/default
+RUN cp -f etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/mysite
+RUN cp -f build/static/main.html /var/www/html/index.html
+RUN rsync -az build/assets/ /var/www/assets/
+
+# run nginx in the foreground
+CMD ["nginx", "-g", "daemon off;"]
