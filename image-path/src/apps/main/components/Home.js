@@ -2,6 +2,7 @@
 
 import React, { Component } from "react";
 import "./Home.css";
+import myimage from "main/assets/myimage.png";
 
 export default class Home extends Component {
   render () {
@@ -31,6 +32,7 @@ export default class Home extends Component {
             <h3><code>gluestick generate</code></h3>
             <p>Generators for all kinds of things.</p>
           </div>
+          <img src={myimage} />
         </div>
       </div>
     );
